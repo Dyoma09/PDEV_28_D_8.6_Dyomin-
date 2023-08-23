@@ -1,7 +1,7 @@
-#from allauth.account.forms import SignupForm
+from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 
-class BasicSignupForm():
+class BasicSignupForm(SignupForm):
 
     def save(self, reqiest):
         user = super(BasicSignupForm, self).save(reqiest)
