@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.sites',
-    "news",
+    "news.apps.NewsConfig",
     "accounts",
     "sign",
     'django_filters',
@@ -134,11 +134,10 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/news/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'templates')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR, "static"),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -151,6 +150,14 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm'}
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'RamonShnizel'
+EMAIL_HOST_PASSWORD = 'bbihrerwncvuvvbt'
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER + "@yandex.ru"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+#ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm'}
 
 SITE_URL = 'http://127.0.0.1:8000'
