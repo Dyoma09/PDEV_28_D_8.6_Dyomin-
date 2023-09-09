@@ -158,6 +158,6 @@ EMAIL_USE_SSL = True
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER + "@yandex.ru"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-#ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm'}
+ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm'}
 
 SITE_URL = 'http://127.0.0.1:8000'

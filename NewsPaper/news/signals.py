@@ -41,13 +41,14 @@ from django.contrib.auth.models import User, Group
 @receiver(post_save, sender=User)
 def add_user_to_common(sender, instance, created, **kwargs):
     if created:
-        group = Group.objects.get('common')
+        group = Group.objects.get(name='common')
         instance.groups.add(group)
+        
 
-@receiver(post_save, sender=User)
-def send_confirmation_email(sender, instance, created, **kwargs):
-    if created:
-        subject = 'Подтверждение регистрации'
-        name = User.objects.get('name')
-        message = 'Здравствуйте, подтвердите ваш электронный ящик пройдя по ссылке:'
-        send_mail(subject, message, [instance.email])
+# @receiver(post_save, sender=User)
+# def send_confirmation_email(sender, instance, created, **kwargs):
+#     if created:
+#         subject = 'Подтверждение регистрации'
+#         name = instance.objects.get('username')
+#         message = "Здравствуйте, подтвердите ваш электронный ящик пройдя по ссылке:"
+#         send_mail(subject, message, instance.email)
